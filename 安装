@@ -1,0 +1,30 @@
+安装
+byt3bl33d3r编辑了此页面 2016年1月8日 · 17个修订
+＃安装 MITMf依靠LOT外部库，因此强烈建议您使用virtualenvs安装框架，这将避免权限问题和冲突与您的系统网站套餐（特别是在卡利的Linux）。
+
+在开始安装过程之前：
+
+在Arch Linux上：
+pacman -S python2-setuptools libnetfilter_queue libpcap libjpeg-turbo capstone
+在Debian及其衍生产品上（例如Ubuntu，Kali Linux等）
+apt-get install python-dev python-setuptools libpcap0.8-dev libnetfilter-queue-dev libssl-dev libjpeg-dev libxml2-dev libxslt1-dev libcapstone3 libcapstone-dev libffi-dev file
+＃安装MITMf 注意：如果您使用的是Arch Linux，那就太棒了！只需记住在virtualenv之外使用pip2而不是pip
+
+安装virtualenvwrapper：
+pip install virtualenvwrapper
+编辑您的.bashrc或.zshrc文件以获取virtualenvwrapper.sh脚本：
+source /usr/bin/virtualenvwrapper.sh
+该脚本的位置可能因您的Linux发行版而异
+
+重新启动终端或运行：
+source /usr/bin/virtualenvwrapper.sh
+创建您的virtualenv：
+mkvirtualenv MITMf -p /usr/bin/python2.7
+克隆MITMf存储库：
+git clone https://github.com/byt3bl33d3r/MITMf
+cd进入目录，初始化并克隆repos子模块：
+cd MITMf && git submodule init && git submodule update --recursive
+安装依赖项：
+pip install -r requirements.txt
+您已经准备好摇滚！
+python mitmf.py --help
